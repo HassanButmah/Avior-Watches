@@ -298,7 +298,7 @@ export default function ScrollHero() {
                 textShadow: `0 0 20px rgba(200, 169, 110, ${0.3 + scrollProgress * 0.2})`,
               }}
             >
-              Est. 2020 · Dubai
+              Est. 2020 · Palestine
             </motion.div>
 
             {/* Heading */}
