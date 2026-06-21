@@ -318,15 +318,20 @@ export default function ScrollHero() {
               }}
               initial="hidden"
               animate="visible"
-              style={{
-                fontSize: 'clamp(2.4rem, 6vw, 5.5rem)',
-                lineHeight: 1.1,
-                fontFamily: 'var(--font-playfair)',
-                fontWeight: 400,
-                marginBottom: '1.5rem',
-                textShadow: `0 10px 40px rgba(0, 0, 0, 0.8)`,
-                letterSpacing: '-0.01em',
-              }}
+            style={{
+              fontSize: 'clamp(2.4rem, 7vw, 6rem)',
+              lineHeight: 1.05,
+              fontFamily: 'var(--font-playfair)',
+              fontWeight: 400,
+              marginBottom: '1.5rem',
+              textShadow: `
+                0 0 30px rgba(200, 169, 110, ${0.15 + scrollProgress * 0.25}),
+                0 15px 50px rgba(0, 0, 0, 0.9)
+              `,
+              letterSpacing: '-0.02em',
+              color: '#ffffff',
+              filter: `brightness(${1 + scrollProgress * 0.15})`,
+            }}
             >
               Avior Prestige
             </motion.h1>
@@ -384,20 +389,24 @@ export default function ScrollHero() {
               whileTap={{ scale: 0.95 }}
               style={{
                 display: 'inline-block',
-                background: '#C8A96E',
+                background: `linear-gradient(135deg, #C8A96E 0%, #E8C98E 100%)`,
                 color: '#000000',
-                padding: '0.9rem 2.6rem',
-                fontSize: '0.7rem',
-                letterSpacing: '0.18em',
+                padding: '1.1rem 3.2rem',
+                fontSize: '0.75rem',
+                letterSpacing: '0.2em',
                 textTransform: 'uppercase',
-                fontWeight: 500,
+                fontWeight: 600,
                 fontFamily: 'var(--font-inter)',
                 textDecoration: 'none',
                 cursor: 'pointer',
-                border: 'none',
-                transition: 'all 0.3s ease',
+                border: '1px solid rgba(200, 169, 110, 0.3)',
+                transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 pointerEvents: 'auto',
+                boxShadow: `0 10px 30px rgba(200, 169, 110, 0.2)`,
                 backdropFilter: 'blur(10px)',
+                borderRadius: '2px',
+                position: 'relative',
+                overflow: 'hidden',
               }}
             >
               Explore Collection

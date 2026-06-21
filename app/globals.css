@@ -9,14 +9,31 @@ html {
 }
 
 body {
-  background: #000000;
+  background: linear-gradient(180deg, #0a0a0a 0%, #000000 50%, #0f0f1a 100%);
   color: #ffffff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse 80% 80% at 50% 0%, rgba(200, 169, 110, 0.03) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 :root {
   --font-inter: var(--font-inter-fallback);
   --font-playfair: var(--font-playfair-fallback);
+  --gold: #C8A96E;
+  --gold-light: #E8C98E;
+  --steel: #CCCCCC;
+  --shadow: rgba(0, 0, 0, 0.8);
 }
