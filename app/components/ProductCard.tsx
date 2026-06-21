@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Watch } from '@/lib/watches';
+import { useState } from 'react';
 
 interface ProductCardProps {
   watch: Watch;
@@ -11,6 +12,19 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ watch, index = 0 }: ProductCardProps) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = watch.images && watch.images.length > 0 ? watch.images : [watch.image];
+  
+  const nextImage = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  };
+  
+  const prevImage = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -24,10 +38,55 @@ export default function ProductCard({ watch, index = 0 }: ProductCardProps) {
           {/* Image Container */}
           <div className="relative h-80 overflow-hidden bg-black">
             <motion.img
-              src={watch.image}
+              key={currentImageIndex}
+              src={images[currentImageIndex]}
               alt={watch.name}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
             />
+            
+            {/* Image Navigation Buttons */}
+            {images.length > 1 && (
+              <>
+                <button
+                  onClick={prevImage}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white p-2 rounded-full transition-all duration-200 z-10"
+                  style={{ backdropFilter: 'blur(4px)' }}
+                >
+                  ‹
+                </button>
+                <button
+                  onClick={nextImage}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white p-2 rounded-full transition-all duration-200 z-10"
+                  style={{ backdropFilter: 'blur(4px)' }}
+                >
+                  ›
+                </button>
+              </>
+            )}
+            
+            {/* Image Indicators */}
+            {images.length > 1 && (
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                {images.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setCurrentImageIndex(idx);
+                    }}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      idx === currentImageIndex
+                        ? 'bg-amber-400 w-6'
+                        : 'bg-white/40 hover:bg-white/60'
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
+            
             {/* Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
               <button className="w-full py-2 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-semibold rounded-lg hover:shadow-lg hover:shadow-amber-500/50 transition-all duration-200">
@@ -68,17 +127,15 @@ export default function ProductCard({ watch, index = 0 }: ProductCardProps) {
             </h3>
 
             {/* Description */}
-            <p className="text-sm text-white/60 mb-4 line-clamp-2">
+            <p className="text-sm text-white/70 mb-4 line-clamp-2 leading-relaxed">
               {watch.description}
             </p>
 
             {/* Specs Preview */}
-            <div className="flex items-center gap-2 text-xs text-white/50 mb-4">
-              <span>{watch.specs.caseSize}</span>
-              <span>•</span>
-              <span>{watch.specs.caseMaterial}</span>
-              <span>•</span>
-              <span>{watch.specs.water_resistance}</span>
+            <div className="flex flex-wrap gap-2 text-xs text-white/50 mb-4">
+              <span className="bg-white/5 px-2 py-1 rounded">{watch.specs.caseSize}</span>
+              <span className="bg-white/5 px-2 py-1 rounded">{watch.specs.caseMaterial}</span>
+              <span className="bg-white/5 px-2 py-1 rounded">{watch.specs.water_resistance}</span>
             </div>
 
             {/* Rating and Price */}

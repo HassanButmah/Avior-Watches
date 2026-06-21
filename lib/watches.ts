@@ -4,6 +4,7 @@ export interface Watch {
   collection: string;
   price: number;
   image: string;
+  images: string[];
   description: string;
   specs: {
     movement: string;
@@ -29,6 +30,7 @@ export const watches: Watch[] = [
     collection: "Prestige",
     price: 12500,
     image: "/frames/frame_0060.jpg",
+    images: ["/frames/frame_0060.jpg", "/frames/frame_0061.jpg", "/frames/frame_0062.jpg"],
     description: "The ultimate luxury timepiece combining Swiss engineering with contemporary design. Features a complete mechanical movement with visible components.",
     specs: {
       movement: "Automatic Mechanical (In-House)",
@@ -59,6 +61,7 @@ export const watches: Watch[] = [
     collection: "Prestige",
     price: 9800,
     image: "/frames/frame_0050.jpg",
+    images: ["/frames/frame_0050.jpg", "/frames/frame_0051.jpg", "/frames/frame_0052.jpg"],
     description: "The timeless classic with refined elegance. A dress watch suitable for any occasion with exceptional precision.",
     specs: {
       movement: "Automatic Mechanical",
@@ -88,6 +91,7 @@ export const watches: Watch[] = [
     name: "Avior Sports Infinity",
     collection: "Sports",
     price: 8500,
+    images: ["/frames/frame_0040.jpg", "/frames/frame_0041.jpg", "/frames/frame_0042.jpg"],
     image: "/frames/frame_0040.jpg",
     description: "Built for adventure. A robust sports watch with cutting-edge materials and extreme durability.",
     specs: {
@@ -118,6 +122,7 @@ export const watches: Watch[] = [
     name: "Avior Elegant Rose",
     collection: "Heritage",
     price: 11200,
+    images: ["/frames/frame_0030.jpg", "/frames/frame_0031.jpg", "/frames/frame_0032.jpg"],
     image: "/frames/frame_0030.jpg",
     description: "Rose gold elegance meets modern innovation. A watch that captures hearts and moments.",
     specs: {
@@ -148,6 +153,7 @@ export const watches: Watch[] = [
     name: "Avior Marine Blue",
     collection: "Sports",
     price: 7900,
+    images: ["/frames/frame_0070.jpg", "/frames/frame_0071.jpg", "/frames/frame_0072.jpg"],
     image: "/frames/frame_0070.jpg",
     description: "Deep ocean inspiration meets precise craftsmanship. Perfect for water enthusiasts.",
     specs: {
@@ -177,6 +183,7 @@ export const watches: Watch[] = [
     id: "heritage-vintage",
     name: "Avior Heritage Vintage",
     collection: "Heritage",
+    images: ["/frames/frame_0020.jpg", "/frames/frame_0021.jpg", "/frames/frame_0022.jpg"],
     price: 10500,
     image: "/frames/frame_0020.jpg",
     description: "Retro-inspired design with modern reliability. A tribute to classic watchmaking.",

@@ -52,7 +52,7 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex" style={{
-            gap: '3rem',
+            gap: '5rem',
             alignItems: 'center'
           }}>
             {navLinks.map((link) => (
