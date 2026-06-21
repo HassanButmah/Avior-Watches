@@ -10,9 +10,12 @@ const FRAME_HEIGHT = 1080;
 export default function ScrollHero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
   const framesRef = useRef<HTMLImageElement[]>([]);
   const currentFrameRef = useRef(0);
   const animationFrameRef = useRef<number | null>(null);
+  const [framesLoaded, setFramesLoaded] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -22,12 +25,15 @@ export default function ScrollHero() {
     if (!ctx) return;
 
     // Set canvas size with device pixel ratio
-    const devicePixelRatio = window.devicePixelRatio || 1;
-    canvas.width = window.innerWidth * devicePixelRatio;
-    canvas.height = window.innerHeight * devicePixelRatio;
-    canvas.style.width = `${window.innerWidth}px`;
-    canvas.style.height = `${window.innerHeight}px`;
-    ctx.scale(devicePixelRatio, devicePixelRatio);
+    const setCanvasSize = () => {
+      const devicePixelRatio = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * devicePixelRatio;
+      canvas.height = window.innerHeight * devicePixelRatio;
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      ctx.scale(devicePixelRatio, devicePixelRatio);
+    };
+    setCanvasSize();
 
     // Preload all frames
     const frames: HTMLImageElement[] = [];
@@ -35,8 +41,8 @@ export default function ScrollHero() {
 
     const onFrameLoad = () => {
       loadedCount++;
+      setFramesLoaded(loadedCount);
       if (loadedCount === FRAME_COUNT) {
-        // All frames loaded, draw first frame
         drawFrame(0);
       }
     };
@@ -48,6 +54,7 @@ export default function ScrollHero() {
       img.onerror = () => {
         console.warn(`Failed to load frame ${i + 1}`);
         loadedCount++;
+        setFramesLoaded(loadedCount);
         if (loadedCount === FRAME_COUNT) {
           drawFrame(0);
         }
@@ -57,15 +64,17 @@ export default function ScrollHero() {
 
     framesRef.current = frames;
 
-    // Draw function with cover-fit scaling
+    // Draw function with premium effects
     function drawFrame(frameIndex: number) {
       if (!canvas || !ctx || frames.length === 0) return;
 
       const frame = frames[frameIndex];
-      if (!frame || !frame.complete) return;
+      // Check if frame is valid and loaded
+      if (!frame || !frame.complete || !frame.naturalWidth) return;
 
-      const cw = canvas.width / (window.devicePixelRatio || 1);
-      const ch = canvas.height / (window.devicePixelRatio || 1);
+      const devicePixelRatio = window.devicePixelRatio || 1;
+      const cw = canvas.width / devicePixelRatio;
+      const ch = canvas.height / devicePixelRatio;
       const iw = FRAME_WIDTH;
       const ih = FRAME_HEIGHT;
 
@@ -76,12 +85,38 @@ export default function ScrollHero() {
       const x = (cw - scaledWidth) / 2;
       const y = (ch - scaledHeight) / 2;
 
-      // Clear and fill black background
+      // Clear background
       ctx.fillStyle = '#000000';
       ctx.fillRect(0, 0, cw, ch);
 
-      // Draw frame
-      ctx.drawImage(frame, x, y, scaledWidth, scaledHeight);
+      // Add premium glow effect
+      const glowColor = `rgba(200, 169, 110, ${0.15 * scrollProgress})`;
+      ctx.shadowColor = glowColor;
+      ctx.shadowBlur = 40 + scrollProgress * 20;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
+
+      // Calculate subtle zoom based on scroll
+      const zoomScale = 1 + scrollProgress * 0.08;
+      const zoomX = x + scaledWidth / 2;
+      const zoomY = y + scaledHeight / 2;
+
+      ctx.save();
+      ctx.translate(zoomX, zoomY);
+      ctx.scale(zoomScale, zoomScale);
+      ctx.translate(-zoomX, -zoomY);
+
+      // Draw frame - safely check if image is ready
+      try {
+        ctx.drawImage(frame, x, y, scaledWidth, scaledHeight);
+      } catch (e) {
+        console.error('Failed to draw frame:', e);
+      }
+      ctx.restore();
+
+      // Reset shadow
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
 
       currentFrameRef.current = frameIndex;
     }
@@ -108,6 +143,8 @@ export default function ScrollHero() {
         )
       );
 
+      setScrollProgress(progress);
+
       // Calculate target frame
       const targetFrame = Math.round(progress * (FRAME_COUNT - 1));
 
@@ -123,12 +160,7 @@ export default function ScrollHero() {
 
     // Handle resize
     const handleResize = () => {
-      const devicePixelRatio = window.devicePixelRatio || 1;
-      canvas.width = window.innerWidth * devicePixelRatio;
-      canvas.height = window.innerHeight * devicePixelRatio;
-      canvas.style.width = `${window.innerWidth}px`;
-      canvas.style.height = `${window.innerHeight}px`;
-      ctx.scale(devicePixelRatio, devicePixelRatio);
+      setCanvasSize();
       drawFrame(currentFrameRef.current);
     };
 
@@ -141,19 +173,6 @@ export default function ScrollHero() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
-
-  const overlayVariants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: (delay: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: 0.8 + delay * 0.1,
-        duration: 0.8,
-        ease: [0.25, 0, 0, 1],
-      },
-    }),
-  };
 
   return (
     <div ref={containerRef} style={{ height: '300vh', position: 'relative' }}>
@@ -176,8 +195,54 @@ export default function ScrollHero() {
           }}
         />
 
-        {/* Overlay */}
+        {/* Loading indicator */}
+        {framesLoaded < FRAME_COUNT && (
+          <div
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              textAlign: 'center',
+              zIndex: 10,
+            }}
+          >
+            <div
+              style={{
+                fontSize: '0.75rem',
+                color: '#C8A96E',
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                marginBottom: '1rem',
+              }}
+            >
+              Loading Experience
+            </div>
+            <div
+              style={{
+                width: '60px',
+                height: '2px',
+                background: 'rgba(200, 169, 110, 0.2)',
+                margin: '0 auto',
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+            >
+              <motion.div
+                animate={{ width: `${(framesLoaded / FRAME_COUNT) * 100}%` }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  height: '100%',
+                  background: '#C8A96E',
+                }}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Overlay with premium effects */}
         <div
+          ref={overlayRef}
           style={{
             position: 'absolute',
             inset: 0,
@@ -190,11 +255,36 @@ export default function ScrollHero() {
             pointerEvents: 'none',
           }}
         >
-          <div style={{ maxWidth: '600px' }}>
+          {/* Premium glow effect behind text */}
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '20%',
+              left: 0,
+              width: '400px',
+              height: '200px',
+              background: `radial-gradient(ellipse, rgba(200, 169, 110, ${0.1 + scrollProgress * 0.1}) 0%, transparent 70%)`,
+              filter: 'blur(60px)',
+              pointerEvents: 'none',
+            }}
+          />
+
+          <div style={{ maxWidth: '600px', position: 'relative', zIndex: 1 }}>
             {/* Label */}
             <motion.div
               custom={0}
-              variants={overlayVariants}
+              variants={{
+                hidden: { opacity: 0, y: 24 },
+                visible: (delay: number) => ({
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    delay: 0.8 + delay * 0.1,
+                    duration: 0.8,
+                    ease: [0.25, 0, 0, 1],
+                  },
+                }),
+              }}
               initial="hidden"
               animate="visible"
               style={{
@@ -205,6 +295,7 @@ export default function ScrollHero() {
                 fontFamily: 'var(--font-inter)',
                 fontWeight: 400,
                 marginBottom: '1.5rem',
+                textShadow: `0 0 20px rgba(200, 169, 110, ${0.3 + scrollProgress * 0.2})`,
               }}
             >
               Est. 1905 · Geneva
@@ -213,7 +304,18 @@ export default function ScrollHero() {
             {/* Heading */}
             <motion.h1
               custom={1}
-              variants={overlayVariants}
+              variants={{
+                hidden: { opacity: 0, y: 24 },
+                visible: (delay: number) => ({
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    delay: 0.8 + delay * 0.1,
+                    duration: 0.8,
+                    ease: [0.25, 0, 0, 1],
+                  },
+                }),
+              }}
               initial="hidden"
               animate="visible"
               style={{
@@ -222,6 +324,8 @@ export default function ScrollHero() {
                 fontFamily: 'var(--font-playfair)',
                 fontWeight: 400,
                 marginBottom: '1.5rem',
+                textShadow: `0 10px 40px rgba(0, 0, 0, 0.8)`,
+                letterSpacing: '-0.01em',
               }}
             >
               Rolex Day-Date 40
@@ -230,7 +334,18 @@ export default function ScrollHero() {
             {/* Subtext */}
             <motion.p
               custom={2}
-              variants={overlayVariants}
+              variants={{
+                hidden: { opacity: 0, y: 24 },
+                visible: (delay: number) => ({
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    delay: 0.8 + delay * 0.1,
+                    duration: 0.8,
+                    ease: [0.25, 0, 0, 1],
+                  },
+                }),
+              }}
               initial="hidden"
               animate="visible"
               style={{
@@ -250,10 +365,23 @@ export default function ScrollHero() {
             {/* CTA Button */}
             <motion.a
               custom={3}
-              variants={overlayVariants}
+              variants={{
+                hidden: { opacity: 0, y: 24 },
+                visible: (delay: number) => ({
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    delay: 0.8 + delay * 0.1,
+                    duration: 0.8,
+                    ease: [0.25, 0, 0, 1],
+                  },
+                }),
+              }}
               initial="hidden"
               animate="visible"
               href="#features"
+              whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(200, 169, 110, 0.5)' }}
+              whileTap={{ scale: 0.95 }}
               style={{
                 display: 'inline-block',
                 background: '#C8A96E',
@@ -269,14 +397,7 @@ export default function ScrollHero() {
                 border: 'none',
                 transition: 'all 0.3s ease',
                 pointerEvents: 'auto',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#E8C98E';
-                e.currentTarget.style.transform = 'scale(1.05)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#C8A96E';
-                e.currentTarget.style.transform = 'scale(1)';
+                backdropFilter: 'blur(10px)',
               }}
             >
               Explore Collection
