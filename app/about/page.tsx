@@ -10,7 +10,7 @@ export default function AboutPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-40 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-amber-950/20 to-black">
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-amber-950/20 to-black">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

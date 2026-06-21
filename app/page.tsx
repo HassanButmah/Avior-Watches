@@ -8,10 +8,12 @@ export default function Home() {
   return (
     <main style={{ background: '#000000' }}>
       <Header />
-      <ScrollHero />
-      <FeaturesSection />
-      <SpecsSection />
-      <ClosingCTA />
+      <div className="pt-24">
+        <ScrollHero />
+        <FeaturesSection />
+        <SpecsSection />
+        <ClosingCTA />
+      </div>
     </main>
   );
 }
