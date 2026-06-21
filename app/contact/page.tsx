@@ -25,21 +25,38 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div style={{ minHeight: '100vh', backgroundColor: 'black', color: 'white' }}>
       <Header />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-amber-950/20 to-black">
-        <div className="max-w-4xl mx-auto text-center">
+      <section style={{
+        paddingTop: '8rem',
+        paddingBottom: '5rem',
+        paddingLeft: '1rem',
+        paddingRight: '1rem',
+        background: 'linear-gradient(to bottom, rgba(120, 53, 15, 0.1), black)'
+      }}>
+        <div style={{ maxWidth: '56rem', marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl sm:text-7xl font-bold mb-6 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 bg-clip-text text-transparent">
+            <h1 style={{
+              fontSize: '3rem',
+              fontWeight: 'bold',
+              marginBottom: '1.5rem',
+              background: 'linear-gradient(to right, #facc15, #fde047, #fb923c)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>
               Get in Touch
             </h1>
-            <p className="text-xl text-white/70">
+            <p style={{
+              fontSize: '1.25rem',
+              color: 'rgba(255, 255, 255, 0.7)'
+            }}>
               We'd love to hear from you. Contact us for any inquiries.
             </p>
           </motion.div>
@@ -47,37 +64,45 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="px-4 sm:px-6 lg:px-8 py-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <section style={{
+        paddingLeft: '1rem',
+        paddingRight: '1rem',
+        paddingTop: '5rem',
+        paddingBottom: '5rem'
+      }}>
+        <div style={{ maxWidth: '80rem', marginLeft: 'auto', marginRight: 'auto' }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '3rem'
+          }}>
             {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="space-y-8"
+              style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}
             >
               {[
                 {
-                  icon: "📍",
-                  title: "Address",
-                  content: "Rue des Montants 7\n2034 Peseux, Switzerland"
+                  icon: '📍',
+                  title: 'Address',
+                  content: 'Rue des Montants 7\n2034 Peseux, Switzerland'
                 },
                 {
-                  icon: "📞",
-                  title: "Phone",
-                  content: "+41 32 731 0000\n+1 800 AVIOR 00"
+                  icon: '📞',
+                  title: 'Phone',
+                  content: '+41 32 731 0000\n+1 800 AVIOR 00'
                 },
                 {
-                  icon: "✉️",
-                  title: "Email",
-                  content: "info@aviorprestige.com\nsupport@aviorprestige.com"
+                  icon: '✉️',
+                  title: 'Email',
+                  content: 'info@aviorprestige.com\nsupport@aviorprestige.com'
                 },
                 {
-                  icon: "🕐",
-                  title: "Hours",
-                  content: "Monday - Friday\n9:00 AM - 6:00 PM CET"
+                  icon: '🕐',
+                  title: 'Hours',
+                  content: 'Monday - Friday\n9:00 AM - 6:00 PM CET'
                 }
               ].map((item, idx) => (
                 <motion.div
@@ -85,11 +110,14 @@ export default function ContactPage() {
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  viewport={{ once: true }}
                 >
-                  <div className="text-3xl mb-3">{item.icon}</div>
-                  <h3 className="text-xl font-bold mb-2 text-amber-400">{item.title}</h3>
-                  <p className="text-white/70 whitespace-pre-line">{item.content}</p>
+                  <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{item.icon}</div>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '0.5rem', color: '#facc15' }}>
+                    {item.title}
+                  </h3>
+                  <p style={{ color: 'rgba(255, 255, 255, 0.7)', whiteSpace: 'pre-wrap' }}>
+                    {item.content}
+                  </p>
                 </motion.div>
               ))}
             </motion.div>
@@ -99,57 +127,108 @@ export default function ContactPage() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
               onSubmit={handleSubmit}
-              className="lg:col-span-2 space-y-6"
+              style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
                 <div>
-                  <label className="block text-sm font-semibold mb-2 text-white/80">Full Name</label>
+                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 'bold', marginBottom: '0.5rem', color: 'rgba(255, 255, 255, 0.8)' }}>
+                    Full Name
+                  </label>
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-amber-400 transition-all"
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem 1rem',
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      borderRadius: '0.5rem',
+                      color: 'white',
+                      fontSize: '1rem',
+                      outline: 'none'
+                    }}
+                    onFocus={(e) => e.target.style.borderColor = '#facc15'}
+                    onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.2)'}
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold mb-2 text-white/80">Email</label>
+                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 'bold', marginBottom: '0.5rem', color: 'rgba(255, 255, 255, 0.8)' }}>
+                    Email
+                  </label>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-amber-400 transition-all"
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem 1rem',
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      borderRadius: '0.5rem',
+                      color: 'white',
+                      fontSize: '1rem',
+                      outline: 'none'
+                    }}
+                    onFocus={(e) => e.target.style.borderColor = '#facc15'}
+                    onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.2)'}
                     placeholder="your@email.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2 text-white/80">Phone (Optional)</label>
+                <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 'bold', marginBottom: '0.5rem', color: 'rgba(255, 255, 255, 0.8)' }}>
+                  Phone (Optional)
+                </label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-amber-400 transition-all"
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem 1rem',
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    borderRadius: '0.5rem',
+                    color: 'white',
+                    fontSize: '1rem',
+                    outline: 'none'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = '#facc15'}
+                  onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.2)'}
                   placeholder="+41 32 731 0000"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2 text-white/80">Subject</label>
+                <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 'bold', marginBottom: '0.5rem', color: 'rgba(255, 255, 255, 0.8)' }}>
+                  Subject
+                </label>
                 <select
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-amber-400 transition-all"
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem 1rem',
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    borderRadius: '0.5rem',
+                    color: 'white',
+                    fontSize: '1rem',
+                    outline: 'none'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = '#facc15'}
+                  onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.2)'}
                 >
                   <option value="">Select a subject</option>
                   <option value="inquiry">Product Inquiry</option>
@@ -162,14 +241,28 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-2 text-white/80">Message</label>
+                <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 'bold', marginBottom: '0.5rem', color: 'rgba(255, 255, 255, 0.8)' }}>
+                  Message
+                </label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/40 focus:outline-none focus:border-amber-400 transition-all resize-none"
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem 1rem',
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    borderRadius: '0.5rem',
+                    color: 'white',
+                    fontSize: '1rem',
+                    outline: 'none',
+                    resize: 'none'
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = '#facc15'}
+                  onBlur={(e) => e.target.style.borderColor = 'rgba(255, 255, 255, 0.2)'}
                   placeholder="Your message..."
                 />
               </div>
@@ -178,7 +271,17 @@ export default function ContactPage() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full py-3 bg-gradient-to-r from-amber-400 to-amber-500 text-black font-bold rounded-lg hover:shadow-lg hover:shadow-amber-500/50 transition-all"
+                style={{
+                  width: '100%',
+                  padding: '0.75rem 1rem',
+                  background: 'linear-gradient(to right, #facc15, #fb923c)',
+                  color: 'black',
+                  fontWeight: 'bold',
+                  border: 'none',
+                  borderRadius: '0.5rem',
+                  cursor: 'pointer',
+                  fontSize: '1rem'
+                }}
               >
                 Send Message
               </motion.button>
@@ -188,34 +291,39 @@ export default function ContactPage() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 bg-black/50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <footer style={{
+        borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        backdropFilter: 'blur(10px)'
+      }}>
+        <div style={{ maxWidth: '80rem', marginLeft: 'auto', marginRight: 'auto', padding: '3rem 1rem' }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '2rem',
+            marginBottom: '2rem'
+          }}>
             <div>
-              <h3 className="text-amber-400 font-bold mb-4">AVIOR</h3>
-              <p className="text-white/60 text-sm">Luxury watches crafted with precision</p>
+              <h3 style={{ color: '#facc15', fontWeight: 'bold', marginBottom: '1rem' }}>AVIOR</h3>
+              <p style={{ color: 'rgba(255, 255, 255, 0.6)', fontSize: '0.875rem' }}>
+                Luxury watches crafted with precision
+              </p>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">Shop</h4>
-              <ul className="space-y-2 text-white/60 text-sm">
-                <li><a href="/collection" className="hover:text-amber-400 transition">All Watches</a></li>
+              <h4 style={{ color: 'white', fontWeight: 'bold', marginBottom: '1rem' }}>Shop</h4>
+              <ul style={{ listStyle: 'none', padding: 0 }}>
+                <li><a href="/collection" style={{ color: 'rgba(255, 255, 255, 0.6)', textDecoration: 'none' }}>All Watches</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-white/60 text-sm">
-                <li><a href="/about" className="hover:text-amber-400 transition">About</a></li>
-                <li><a href="/contact" className="hover:text-amber-400 transition">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">Follow</h4>
-              <ul className="space-y-2 text-white/60 text-sm">
-                <li><a href="#" className="hover:text-amber-400 transition">Instagram</a></li>
+              <h4 style={{ color: 'white', fontWeight: 'bold', marginBottom: '1rem' }}>Company</h4>
+              <ul style={{ listStyle: 'none', padding: 0 }}>
+                <li><a href="/about" style={{ color: 'rgba(255, 255, 255, 0.6)', textDecoration: 'none' }}>About</a></li>
+                <li><a href="/contact" style={{ color: 'rgba(255, 255, 255, 0.6)', textDecoration: 'none' }}>Contact</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-white/10 pt-8 text-center text-white/60 text-sm">
+          <div style={{ borderTop: '1px solid rgba(255, 255, 255, 0.1)', paddingTop: '2rem', textAlign: 'center', color: 'rgba(255, 255, 255, 0.6)', fontSize: '0.875rem' }}>
             <p>&copy; 2026 Avior Prestige. All rights reserved.</p>
           </div>
         </div>
