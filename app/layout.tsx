@@ -15,11 +15,11 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Rolex Day-Date 40 | Avior Watches",
-  description: "A century of mastery. The Rolex Day-Date 40 in Everose gold.",
+  title: "Avior Prestige | Luxury Watches",
+  description: "Experience precision engineering and timeless elegance with Avior Prestige. Luxury watches crafted for the discerning.",
   openGraph: {
-    title: "Rolex Day-Date 40 | Avior Watches",
-    description: "A century of mastery. The Rolex Day-Date 40 in Everose gold.",
+    title: "Avior Prestige | Luxury Watches",
+    description: "Experience precision engineering and timeless elegance with Avior Prestige.",
     type: "website",
   },
 };

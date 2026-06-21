@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
-const FRAME_COUNT = 96; // Will be updated based on actual video duration
+const FRAME_COUNT = 120; // 120 frames at 24fps = 5 second animation
 const FRAME_WIDTH = 1920;
 const FRAME_HEIGHT = 1080;
 
@@ -298,7 +298,7 @@ export default function ScrollHero() {
                 textShadow: `0 0 20px rgba(200, 169, 110, ${0.3 + scrollProgress * 0.2})`,
               }}
             >
-              Est. 1905 · Geneva
+              Est. 2020 · Dubai
             </motion.div>
 
             {/* Heading */}
@@ -328,7 +328,7 @@ export default function ScrollHero() {
                 letterSpacing: '-0.01em',
               }}
             >
-              Rolex Day-Date 40
+              Avior Prestige
             </motion.h1>
 
             {/* Subtext */}
@@ -358,8 +358,8 @@ export default function ScrollHero() {
                 maxWidth: '460px',
               }}
             >
-              The President bracelet. The Cyclops magnifier. A century of
-              mastery, refined to an instant.
+              Engineered for precision. Designed for elegance. A luxury timepiece
+              that defies time itself.
             </motion.p>
 
             {/* CTA Button */}

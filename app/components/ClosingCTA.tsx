@@ -99,7 +99,7 @@ export default function ClosingCTA() {
               marginBottom: '0.5rem',
             }}
           >
-            A century of mastery.
+            Time is precious.
           </h2>
           <p
             style={{
@@ -111,7 +111,7 @@ export default function ClosingCTA() {
               fontStyle: 'italic',
             }}
           >
-            One expression of it.
+            Make it count.
           </p>
         </motion.div>
 
@@ -130,14 +130,14 @@ export default function ClosingCTA() {
             marginRight: 'auto',
           }}
         >
-          The Rolex Day-Date 40 combines timeless elegance with mechanical
-          excellence, representing the zenith of watchmaking craftsmanship.
+          Avior Prestige combines cutting-edge engineering with timeless design,
+          crafted for those who refuse to compromise on quality or style.
         </motion.p>
 
         {/* CTA Button */}
         <motion.div variants={itemVariants}>
           <motion.a
-            href="https://www.rolex.com"
+            href="#"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
@@ -166,7 +166,7 @@ export default function ClosingCTA() {
               e.currentTarget.style.color = '#C8A96E';
             }}
           >
-            Find an Authorised Retailer
+            Discover Avior Collection
           </motion.a>
         </motion.div>
       </motion.div>

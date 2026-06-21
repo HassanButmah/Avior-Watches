@@ -11,9 +11,9 @@ interface Feature {
 
 const features: Feature[] = [
   {
-    label: 'Perpetual Movement',
+    label: 'Automatic Movement',
     description:
-      'Automatic rotor mechanism wound by the motion of the wearer\'s wrist, ensuring continuous power reserve without manual winding.',
+      'Precision-engineered automatic rotor mechanism that winds continuously with wrist motion, delivering 48-hour power reserve without manual intervention.',
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
         <circle cx="16" cy="16" r="14" stroke="currentColor" strokeWidth="1.5" />
@@ -27,9 +27,9 @@ const features: Feature[] = [
     ),
   },
   {
-    label: 'Everose Gold',
+    label: 'Premium Case Material',
     description:
-      'Proprietary Rolex alloy: rose gold infused with a copper compound for exceptional durability and an unmistakable warm hue.',
+      'Crafted from aerospace-grade stainless steel with golden accents, engineered for durability, corrosion resistance, and timeless elegance.',
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
         <path
@@ -42,9 +42,9 @@ const features: Feature[] = [
     ),
   },
   {
-    label: 'Oyster Waterproofing',
+    label: 'Water Resistant',
     description:
-      'Hermetically sealed case with threaded caseback and screw-down crown, rated 100m water resistant for everyday use.',
+      'Advanced sealed construction with screw-down crown, rated 300 meters water-resistant for professional diving and everyday adventures.',
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
         <path
@@ -63,9 +63,9 @@ const features: Feature[] = [
     ),
   },
   {
-    label: 'President Bracelet',
+    label: 'Luxury Bracelet',
     description:
-      'Three-piece solid links with semi-circular center and flat outer links. Hand-assembled and adjusted to exacting tolerances.',
+      'Interlocking three-piece solid metal links with seamless integration, individually polished and adjusted to exacting standards for supreme comfort.',
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
         <rect x="4" y="12" width="24" height="8" stroke="currentColor" strokeWidth="1.5" />
@@ -79,7 +79,7 @@ const features: Feature[] = [
   {
     label: 'Superlative Chronometer',
     description:
-      'Officially certified accuracy of -2/+2 seconds per day. Tested and validated to COSC standards, then re-tested by Rolex.',
+      'Officially certified to -4/+6 seconds per day. Advanced motion-sensing technology ensures precision across all conditions.',
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
         <circle cx="16" cy="16" r="12" stroke="currentColor" strokeWidth="1.5" />
@@ -94,9 +94,9 @@ const features: Feature[] = [
     ),
   },
   {
-    label: 'Cyclops Date Window',
+    label: 'Sapphire Crystal',
     description:
-      'Magnifying lens fitted under the sapphire crystal to enlarge the date by 2.5x, reducing eye strain and enhancing readability.',
+      'Scratch-resistant synthetic sapphire crystal with anti-reflective coating, ensuring perfect clarity and legibility in all lighting conditions.',
     icon: (
       <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
         <circle cx="16" cy="16" r="8" stroke="currentColor" strokeWidth="1.5" />
@@ -161,7 +161,7 @@ export default function FeaturesSection() {
             marginBottom: '2rem',
           }}
         >
-          Crafted Without Compromise
+          Engineered Excellence
         </motion.div>
 
         {/* Heading */}
@@ -176,7 +176,7 @@ export default function FeaturesSection() {
             maxWidth: '800px',
           }}
         >
-          Where precision meets performance
+          Precision meets luxury in every detail
         </motion.h2>
 
         {/* Features Grid */}

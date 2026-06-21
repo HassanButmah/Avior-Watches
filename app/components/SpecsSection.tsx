@@ -9,16 +9,16 @@ interface Spec {
 }
 
 const specs: Spec[] = [
-  { label: 'Reference Number', value: 'Rolex 128238' },
-  { label: 'Case Diameter', value: '40 mm' },
-  { label: 'Case Material', value: 'Everose Gold (18K)' },
-  { label: 'Movement', value: 'Perpetual Rotor, 31 Jewels' },
-  { label: 'Power Reserve', value: 'Approximately 48 hours' },
-  { label: 'Accuracy', value: '-2/+2 seconds per day' },
-  { label: 'Crystal', value: 'Sapphire with Cyclops lens' },
-  { label: 'Water Resistance', value: '100 meters (330 feet)' },
-  { label: 'Dial', value: 'Chocolate Sunburst' },
-  { label: 'Bracelet', value: 'President, three-piece links' },
+  { label: 'Model', value: 'Avior Prestige Pro' },
+  { label: 'Case Diameter', value: '42 mm' },
+  { label: 'Case Material', value: 'Stainless Steel & Gold' },
+  { label: 'Movement Type', value: 'Automatic, Self-Winding' },
+  { label: 'Power Reserve', value: '48 hours' },
+  { label: 'Accuracy', value: '-4/+6 seconds per day' },
+  { label: 'Crystal', value: 'Sapphire with AR Coating' },
+  { label: 'Water Resistance', value: '300 meters (1000 feet)' },
+  { label: 'Dial Type', value: 'Sunburst Finish' },
+  { label: 'Bracelet Style', value: 'Premium Metal Links' },
 ];
 
 export default function SpecsSection() {
