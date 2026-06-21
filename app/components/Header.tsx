@@ -52,8 +52,9 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex" style={{
-            gap: '5rem',
-            alignItems: 'center'
+            gap: '0',
+            alignItems: 'center',
+            display: 'flex'
           }}>
             {navLinks.map((link) => (
               <Link
@@ -65,7 +66,12 @@ export default function Header() {
                   fontWeight: 600,
                   fontSize: '0.95rem',
                   position: 'relative',
-                  transition: 'color 0.3s ease'
+                  transition: 'color 0.3s ease',
+                  paddingLeft: '2rem',
+                  paddingRight: '2rem',
+                  paddingTop: '0.5rem',
+                  paddingBottom: '0.5rem',
+                  display: 'inline-block'
                 }}
                 onMouseEnter={(e) => !isActive(link.href) && (e.currentTarget.style.color = '#facc15')}
                 onMouseLeave={(e) => !isActive(link.href) && (e.currentTarget.style.color = 'rgba(255, 255, 255, 0.9)')}

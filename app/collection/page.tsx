@@ -60,8 +60,9 @@ export default function CollectionPage() {
         <div style={{ maxWidth: '80rem', marginLeft: 'auto', marginRight: 'auto' }}>
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '2rem'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: '3rem',
+            padding: '0 1rem'
           }}>
             {watches.map((watch, index) => (
               <ProductCard key={watch.id} watch={watch} index={index} />
