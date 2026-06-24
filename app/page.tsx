@@ -1,19 +1,21 @@
-import Header from './components/Header';
-import ScrollHero from './components/ScrollHero';
-import FeaturesSection from './components/FeaturesSection';
-import SpecsSection from './components/SpecsSection';
-import ClosingCTA from './components/ClosingCTA';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import ScrollHero3D from '@/components/hero/ScrollHero3D';
+import FeaturesSection from '@/components/home/FeaturesSection';
+import SpecsSection from '@/components/home/SpecsSection';
+import ClosingCTA from '@/components/home/ClosingCTA';
 
 export default function Home() {
   return (
-    <main style={{ background: '#000000' }}>
+    <div className="min-h-screen bg-black text-white flex flex-col">
       <Header />
-      <div className="pt-24">
-        <ScrollHero />
+      <main className="flex-1">
+        <ScrollHero3D />
         <FeaturesSection />
         <SpecsSection />
         <ClosingCTA />
-      </div>
-    </main>
+      </main>
+      <Footer />
+    </div>
   );
 }
