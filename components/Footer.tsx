@@ -23,14 +23,11 @@ export default function Footer() {
         </div>
 
         <div className="grid gap-3 text-sm text-white/55">
-          <p>Secret admin path:</p>
           <button type="button" onClick={incrementClick} className="text-left text-white transition hover:text-gold">
-            الخليل
+            خليل
           </button>
-          <p className="text-xs uppercase tracking-[0.3em] text-white/35">Click 5 times</p>
         </div>
       </div>
     </footer>
   );
 }
-

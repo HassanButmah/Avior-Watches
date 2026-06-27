@@ -1,11 +1,17 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { useCartStore } from '@/store/cartStore';
 import { BagIcon } from './Icons';
 
 export default function CartIcon() {
   const itemCount = useCartStore((state) => state.itemCount());
   const openDrawer = useCartStore((state) => state.openDrawer);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <button
@@ -15,7 +21,7 @@ export default function CartIcon() {
       aria-label="Open cart"
     >
       <BagIcon className="h-[18px] w-[18px]" />
-      {itemCount > 0 && (
+      {mounted && itemCount > 0 && (
         <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-red-500 px-1 text-[11px] font-semibold text-white">
           {itemCount}
         </span>
