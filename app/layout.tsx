@@ -1,20 +1,11 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Inter } from 'next/font/google';
+import type { ReactNode } from 'react';
 import './globals.css';
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-display',
-  display: 'swap',
-});
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-body',
-  display: 'swap',
-});
+import SiteShell from '@/components/SiteShell';
+import { getSettings } from '@/lib/data';
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://avior.vercel.app'),
   title: 'Avior Watches | Luxury Timepieces from Hebron, Palestine',
   description:
     'Avior — Premium luxury watches and accessories. Crafted for eternity. Born in Hebron, Palestine. مصنوعة للأبد',
@@ -26,10 +17,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: ReactNode }) {
+  const settings = await getSettings();
+
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="font-body antialiased">{children}</body>
+    <html lang="en">
+      <body className="font-body antialiased">
+        <SiteShell settings={settings}>{children}</SiteShell>
+      </body>
     </html>
   );
 }

@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Avior Daytona Elite",
+    "nameAr": "أفيور دايتونا إيليت",
+    "category": "watches",
+    "price": 450,
+    "image": "/images/watch-assembled.jpg",
+    "description": "A masterpiece of precision engineering, the Avior Daytona Elite combines Swiss movement with Palestinian heritage. Featuring a stunning green dial and 18K gold case.",
+    "descriptionAr": "تحفة فنية في الهندسة الدقيقة، تجمع أفيور دايتونا إيليت بين الحركة السويسرية والتراث الفلسطيني. تتميز بقرص أخضر مذهل وعلبة من الذهب عيار 18.",
+    "features": ["Swiss Movement", "Sapphire Crystal", "18K Gold Case", "2 Year Warranty"],
+    "inStock": true
+  },
+  {
+    "id": 2,
+    "name": "Avior Chronograph Pro",
+    "nameAr": "أفيور كرونوغراف برو",
+    "category": "watches",
+    "price": 520,
+    "image": "/images/chronograph-watch.png",
+    "description": "Professional chronograph for the discerning collector. Rose gold finish with precision automatic movement.",
+    "descriptionAr": "كرونوغراف احترافي للمقتني الذواقة. لمسة من الذهب الوردي مع حركة أوتوماتيكية دقيقة.",
+    "features": ["Chronograph", "Swiss ETA Movement", "Sapphire Crystal", "50m Water Resistant"],
+    "inStock": true
+  },
+  {
+    "id": 3,
+    "name": "Avior Classic Silver",
+    "nameAr": "أفيور كلاسيك فضي",
+    "category": "watches",
+    "price": 380,
+    "image": "/images/silver-watch.png",
+    "description": "Timeless elegance meets modern precision. Silver and gold dress watch for every occasion.",
+    "descriptionAr": "الأناقة الخالدة تلتقي بالدقة الحديثة. ساعة فضية وذهبية لكل مناسبة.",
+    "features": ["Automatic Movement", "38mm Case", "Dress Watch", "Scratch Resistant"],
+    "inStock": true
+  },
+  {
+    "id": 4,
+    "name": "Avior Gold Chain Bracelet",
+    "nameAr": "أفيور سوار سلسلة ذهبي",
+    "category": "bracelets",
+    "price": 120,
+    "image": "/images/gold-bracelet.png",
+    "description": "18K gold-plated bracelet with precision-engineered links. A statement piece that complements any Avior timepiece.",
+    "descriptionAr": "سوار مطلي بالذهب عيار 18 مع حلقات مصنوعة بدقة عالية. قطعة مميزة تكمل أي ساعة أفيور.",
+    "features": ["18K Gold Plated", "Oysterlock Clasp", "Adjustable Size", "Unisex"],
+    "inStock": true
+  },
+  {
+    "id": 5,
+    "name": "Avior Signature Cufflinks",
+    "nameAr": "أفيور أزرار أكمام مميزة",
+    "category": "accessories",
+    "price": 85,
+    "image": "/images/cufflinks.png",
+    "description": "Gold-plated cufflinks with signature Avior engraving. The perfect finishing touch.",
+    "descriptionAr": "أزرار أكمام مطلية بالذهب مع نقش أفيور المميز. اللمسة الأخيرة المثالية.",
+    "features": ["Gold Plated", "Signature Engraving", "Gift Box Included"],
+    "inStock": true
+  },
+  {
+    "id": 6,
+    "name": "Avior Premium Leather Strap",
+    "nameAr": "أفيور حزام جلد فاخر",
+    "category": "accessories",
+    "price": 60,
+    "image": "/images/watch-strap.png",
+    "description": "Premium leather watch strap with gold buckle. Fits all Avior timepieces.",
+    "descriptionAr": "حزام ساعة جلدي فاخر مع إبزيم ذهبي. يناسب جميع ساعات أفيور.",
+    "features": ["Premium Leather", "Gold Buckle", "22mm Width", "Quick Release"],
+    "inStock": true
+  }
+]

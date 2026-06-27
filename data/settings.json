@@ -1,0 +1,10 @@
+{
+  "whatsappNumber": "970PHONENUMBERPLACEHOLDER",
+  "instagramHandle": "INSTAGRAM_PAGE_PLACEHOLDER",
+  "usdToIls": 3.7,
+  "freeShippingThreshold": 200,
+  "announcementBar": {
+    "enabled": true,
+    "text": "Free shipping on orders over $200 | شحن مجاني للطلبات فوق $200"
+  }
+}
