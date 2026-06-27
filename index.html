@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avior — Luxury Watches & Accessories | Crafted in Hebron, Palestine</title>
+    <meta name="description" content="Avior — a Palestinian luxury watch brand from Hebron. Discover timeless elegance with our handcrafted watches, bracelets, and accessories. مصنوعة للأبد.">
+    <meta name="keywords" content="Avior, luxury watches, Palestinian brand, Hebron, accessories, bracelets, gold watches">
+    <meta name="author" content="Avior Watches">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <h1 class="loader-logo">AVIOR</h1>
+            <div class="loader-bar-track">
+                <div class="loader-bar-fill"></div>
+            </div>
+            <p class="loader-tagline">Crafted for Eternity</p>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">AVIOR</a>
+            <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul id="nav-menu" class="nav-menu">
+                <li><a href="#hero" class="nav-link active">Home</a></li>
+                <li><a href="#collections" class="nav-link">Collections</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><button id="lang-toggle" class="lang-btn" aria-label="Toggle language">عربي</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero">
+        <canvas id="hero-canvas" class="hero-canvas"></canvas>
+        <div class="hero-content">
+            <p class="hero-origin">FROM HEBRON, PALESTINE</p>
+            <h1 class="hero-title">AVIOR</h1>
+            <p class="hero-subtitle">Crafted for Eternity <span class="hero-arabic">| مصنوعة للأبد</span></p>
+            <a href="#exploded-section" class="hero-cta" id="hero-cta">
+                <span>Explore Collection</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+            </a>
+        </div>
+        <div class="hero-scroll-hint">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- EXPLODED WATCH SECTION -->
+    <section id="exploded-section" class="exploded-section">
+        <div class="exploded-grid-bg"></div>
+        <div class="scroll-progress-track">
+            <div id="scroll-progress" class="scroll-progress-fill"></div>
+        </div>
+        <div class="exploded-container">
+            <!-- Watch parts container -->
+            <div id="watch-assembly" class="watch-assembly">
+                <div class="watch-part" id="part-1" data-label="Oysterlock Clasp">
+                    <img src="images/watch-exploded.png" alt="Oysterlock Clasp" class="part-img">
+                </div>
+                <div class="watch-part" id="part-2" data-label="Bracelet Links">
+                    <img src="images/watch-exploded.png" alt="Bracelet Links" class="part-img">
+                </div>
+                <div class="watch-part" id="part-3" data-label="Case Back">
+                    <img src="images/watch-exploded.png" alt="Case Back" class="part-img">
+                </div>
+                <div class="watch-part" id="part-4" data-label="Gold Case">
+                    <img src="images/watch-exploded.png" alt="Gold Case" class="part-img">
+                </div>
+                <div class="watch-part" id="part-5" data-label="Crown & Pushers">
+                    <img src="images/watch-exploded.png" alt="Crown & Pushers" class="part-img">
+                </div>
+                <div class="watch-part" id="part-6" data-label="Caliber 4130 Movement">
+                    <img src="images/watch-exploded.png" alt="Caliber 4130 Movement" class="part-img">
+                </div>
+                <div class="watch-part" id="part-7" data-label="Hands">
+                    <img src="images/watch-exploded.png" alt="Hands" class="part-img">
+                </div>
+                <div class="watch-part" id="part-8" data-label="Green Dial">
+                    <img src="images/watch-exploded.png" alt="Green Dial" class="part-img">
+                </div>
+                <div class="watch-part" id="part-9" data-label="Tachymeter Bezel">
+                    <img src="images/watch-exploded.png" alt="Tachymeter Bezel" class="part-img">
+                </div>
+                <div class="watch-part" id="part-10" data-label="Sapphire Crystal">
+                    <img src="images/watch-exploded.png" alt="Sapphire Crystal" class="part-img">
+                </div>
+
+                <!-- Labels -->
+                <div class="part-label" id="label-1"><span class="label-line"></span><span class="label-text">Oysterlock Clasp</span></div>
+                <div class="part-label" id="label-2"><span class="label-line"></span><span class="label-text">Bracelet Links</span></div>
+                <div class="part-label" id="label-3"><span class="label-line"></span><span class="label-text">Case Back</span></div>
+                <div class="part-label" id="label-4"><span class="label-line"></span><span class="label-text">Gold Case</span></div>
+                <div class="part-label label-right" id="label-5"><span class="label-text">Crown & Pushers</span><span class="label-line"></span></div>
+                <div class="part-label" id="label-6"><span class="label-line"></span><span class="label-text">Caliber 4130 Movement</span></div>
+                <div class="part-label" id="label-7"><span class="label-line"></span><span class="label-text">Hands</span></div>
+                <div class="part-label" id="label-8"><span class="label-line"></span><span class="label-text">Green Dial</span></div>
+                <div class="part-label" id="label-9"><span class="label-line"></span><span class="label-text">Tachymeter Bezel</span></div>
+                <div class="part-label" id="label-10"><span class="label-line"></span><span class="label-text">Sapphire Crystal</span></div>
+            </div>
+
+            <!-- Assembled watch reveal -->
+            <div id="assembled-watch" class="assembled-watch">
+                <canvas id="particle-canvas" class="particle-canvas"></canvas>
+                <img src="images/watch-assembled.jpg" alt="Avior Assembled Watch" class="assembled-img" id="assembled-img">
+                <div class="assembled-text">
+                    <h2>Precision in Every Layer</h2>
+                    <p class="assembled-arabic">الدقة في كل طبقة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COLLECTIONS SECTION -->
+    <section id="collections" class="collections">
+        <div class="section-container">
+            <div class="section-header">
+                <p class="section-tag">OUR COLLECTION</p>
+                <h2 class="section-title">Timeless Pieces</h2>
+                <p class="section-subtitle">Each piece tells a story of precision craftsmanship and Palestinian heritage</p>
+            </div>
+            <div class="filter-bar" id="filter-bar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="watches">Watches</button>
+                <button class="filter-btn" data-filter="bracelets">Bracelets</button>
+                <button class="filter-btn" data-filter="accessories">Accessories</button>
+            </div>
+            <div class="products-grid" id="products-grid">
+                <div class="product-card reveal-item" data-category="watches">
+                    <div class="product-img-wrap">
+                        <img src="images/watch-assembled.jpg" alt="Avior Cosmograph" class="product-img" loading="lazy">
+                        <div class="product-badge">BESTSELLER</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Avior Cosmograph</h3>
+                        <p class="product-desc">18K Gold • Green Dial • Chronograph</p>
+                        <div class="product-price">
+                            <span class="price-usd">$2,450</span>
+                            <span class="price-ils">₪ 8,900</span>
+                        </div>
+                        <button class="product-btn">View Details</button>
+                    </div>
+                </div>
+                <div class="product-card reveal-item" data-category="watches">
+                    <div class="product-img-wrap">
+                        <img src="images/chronograph-watch.png" alt="Avior Heritage" class="product-img" loading="lazy">
+                        <div class="product-badge new">NEW</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Avior Heritage</h3>
+                        <p class="product-desc">Rose Gold • Automatic • 42mm</p>
+                        <div class="product-price">
+                            <span class="price-usd">$1,890</span>
+                            <span class="price-ils">₪ 6,850</span>
+                        </div>
+                        <button class="product-btn">View Details</button>
+                    </div>
+                </div>
+                <div class="product-card reveal-item" data-category="watches">
+                    <div class="product-img-wrap">
+                        <img src="images/silver-watch.png" alt="Avior Classic" class="product-img" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Avior Classic</h3>
+                        <p class="product-desc">Silver & Gold • Dress Watch • 38mm</p>
+                        <div class="product-price">
+                            <span class="price-usd">$1,250</span>
+                            <span class="price-ils">₪ 4,550</span>
+                        </div>
+                        <button class="product-btn">View Details</button>
+                    </div>
+                </div>
+                <div class="product-card reveal-item" data-category="bracelets">
+                    <div class="product-img-wrap">
+                        <img src="images/gold-bracelet.png" alt="Avior Chain Bracelet" class="product-img" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Avior Chain Bracelet</h3>
+                        <p class="product-desc">18K Gold • Link Design • Unisex</p>
+                        <div class="product-price">
+                            <span class="price-usd">$680</span>
+                            <span class="price-ils">₪ 2,470</span>
+                        </div>
+                        <button class="product-btn">View Details</button>
+                    </div>
+                </div>
+                <div class="product-card reveal-item" data-category="accessories">
+                    <div class="product-img-wrap">
+                        <img src="images/cufflinks.png" alt="Avior Cufflinks" class="product-img" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Avior Cufflinks</h3>
+                        <p class="product-desc">Gold Plated • Signature Engraving</p>
+                        <div class="product-price">
+                            <span class="price-usd">$320</span>
+                            <span class="price-ils">₪ 1,160</span>
+                        </div>
+                        <button class="product-btn">View Details</button>
+                    </div>
+                </div>
+                <div class="product-card reveal-item" data-category="accessories">
+                    <div class="product-img-wrap">
+                        <img src="images/watch-strap.png" alt="Avior Leather Strap" class="product-img" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Avior Leather Strap</h3>
+                        <p class="product-desc">Premium Leather • Gold Buckle • 22mm</p>
+                        <div class="product-price">
+                            <span class="price-usd">$180</span>
+                            <span class="price-ils">₪ 650</span>
+                        </div>
+                        <button class="product-btn">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about">
+        <div class="section-container">
+            <div class="section-header">
+                <p class="section-tag">ABOUT AVIOR</p>
+                <h2 class="section-title">Our Story</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-card reveal-item">
+                    <div class="about-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3>Our Heritage | تراثنا</h3>
+                    <p>Born in the ancient city of Hebron (الخليل), Palestine, Avior embodies centuries of artisanal mastery. Our roots run deep in the traditions of craftsmanship that have defined this storied city for generations.</p>
+                    <p class="about-arabic">ولدت في مدينة الخليل العريقة، فلسطين. أفيور تجسد قروناً من الإتقان الحرفي. جذورنا عميقة في تقاليد الصناعة اليدوية التي ميّزت هذه المدينة العريقة لأجيال.</p>
+                </div>
+                <div class="about-card reveal-item">
+                    <div class="about-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>Our Mission | مهمتنا</h3>
+                    <p>To bring Palestinian luxury to the world stage. Every Avior timepiece is a statement — a fusion of modern precision engineering with the soul and identity of our homeland.</p>
+                    <p class="about-arabic">إيصال الفخامة الفلسطينية إلى المسرح العالمي. كل ساعة أفيور هي بيان — مزيج من هندسة الدقة الحديثة مع روح وهوية وطننا.</p>
+                </div>
+                <div class="about-card reveal-item">
+                    <div class="about-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Why Avior? | لماذا أفيور؟</h3>
+                    <p>Named after one of the brightest stars in the sky, Avior represents brilliance, resilience, and an unwavering commitment to excellence. We don't just make watches — we craft legacies.</p>
+                    <p class="about-arabic">سُميت على اسم أحد ألمع النجوم في السماء، أفيور تمثل التألق والمرونة والالتزام الثابت بالتميز. نحن لا نصنع ساعات فحسب — نحن نصنع إرثاً.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact">
+        <div class="section-container">
+            <div class="section-header">
+                <p class="section-tag">GET IN TOUCH</p>
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle">We'd love to hear from you. Reach out for inquiries, custom orders, or collaborations.</p>
+            </div>
+            <div class="contact-grid">
+                <form id="contact-form" class="contact-form reveal-item">
+                    <div class="form-group">
+                        <label for="contact-name">Full Name</label>
+                        <input type="text" id="contact-name" name="name" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email Address</label>
+                        <input type="email" id="contact-email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-phone">Phone Number</label>
+                        <input type="tel" id="contact-phone" name="phone" placeholder="+970 XXX XXX XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" name="message" rows="5" placeholder="Tell us about your inquiry..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" id="submit-btn">
+                        <span>Send Message</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    </button>
+                </form>
+                <div class="contact-info reveal-item">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Hebron, Palestine</p>
+                            <p class="contact-arabic">الخليل، فلسطين</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <a href="https://www.instagram.com/INSTAGRAM_PAGE_PLACEHOLDER" target="_blank" rel="noopener noreferrer" class="contact-link">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                            </div>
+                            <div>
+                                <h4>Instagram</h4>
+                                <p>@INSTAGRAM_PAGE_PLACEHOLDER</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="contact-info-card">
+                        <a href="https://wa.me/970PHONENUMBERPLACEHOLDER" target="_blank" rel="noopener noreferrer" class="contact-link">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                            </div>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <p>+970-PHONE-PLACEHOLDER</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer" class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h2 class="footer-logo">AVIOR</h2>
+                    <p class="footer-tagline">Timeless Elegance from Hebron, Palestine</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#hero">Home</a>
+                    <a href="#collections">Collections</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/INSTAGRAM_PAGE_PLACEHOLDER" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </a>
+                    <a href="https://wa.me/970PHONENUMBERPLACEHOLDER" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Avior Watches. All Rights Reserved.</p>
+                <p class="footer-made">صُنع في الخليل، فلسطين | Made in Hebron, Palestine</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP FLOATING BUTTON -->
+    <a href="https://wa.me/970PHONENUMBERPLACEHOLDER" target="_blank" rel="noopener noreferrer" class="whatsapp-float" id="whatsapp-float" aria-label="Chat on WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="#FFFFFF"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- BACK TO TOP -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
