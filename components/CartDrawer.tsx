@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCartStore } from '@/store/cartStore';
@@ -10,20 +11,28 @@ import { CloseIcon, MinusIcon, PlusIcon, TrashIcon } from './Icons';
 export default function CartDrawer({ settings }: { settings: Settings }) {
   const { items, isDrawerOpen, closeDrawer, updateQuantity, removeItem, total, clearCart } =
     useCartStore();
+  const [mounted, setMounted] = useState(false);
 
-  const shippingRemaining = Math.max(0, settings.freeShippingThreshold - total());
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const safeItems = mounted ? items : [];
+  const safeIsDrawerOpen = mounted && isDrawerOpen;
+  const safeTotal = mounted ? total() : 0;
+  const shippingRemaining = Math.max(0, settings.freeShippingThreshold - safeTotal);
 
   return (
     <>
       <div
         className={`fixed inset-0 z-[70] bg-black/60 transition-opacity ${
-          isDrawerOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+          safeIsDrawerOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
         }`}
         onClick={closeDrawer}
       />
       <aside
         className={`fixed right-0 top-0 z-[80] flex h-full w-full max-w-md flex-col border-l border-white/10 bg-carbon-card shadow-2xl transition-transform duration-300 ${
-          isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
+          safeIsDrawerOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
@@ -42,7 +51,7 @@ export default function CartDrawer({ settings }: { settings: Settings }) {
         </div>
 
         <div className="flex-1 overflow-y-auto px-5 py-4">
-          {items.length === 0 ? (
+          {safeItems.length === 0 ? (
             <div className="flex h-full items-center justify-center text-center text-white/60">
               <div>
                 <p className="mb-2 text-lg font-medium text-white">Your cart is empty</p>
@@ -51,7 +60,7 @@ export default function CartDrawer({ settings }: { settings: Settings }) {
             </div>
           ) : (
             <div className="space-y-4">
-              {items.map((item) => (
+              {safeItems.map((item) => (
                 <div key={item.id} className="flex gap-4 rounded-2xl border border-white/10 p-3">
                   <div className="relative h-24 w-24 overflow-hidden rounded-xl bg-carbon-deep">
                     <Image src={item.image} alt={item.name} fill className="object-cover" />
@@ -99,7 +108,7 @@ export default function CartDrawer({ settings }: { settings: Settings }) {
           <div className="space-y-2 text-sm text-white/70">
             <div className="flex items-center justify-between">
               <span>Subtotal</span>
-              <span>{toCurrency(total())}</span>
+              <span>{toCurrency(safeTotal)}</span>
             </div>
             <div className="flex items-center justify-between">
               <span>Free shipping</span>
