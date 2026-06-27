@@ -1,6 +1,6 @@
 'use client';
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
 export interface CartItem {
   id: number;
@@ -24,6 +24,17 @@ interface CartStore {
   totalIls: (rate: number) => number;
   itemCount: () => number;
 }
+
+const noopStorage = {
+  get length() {
+    return 0;
+  },
+  clear: () => undefined,
+  getItem: () => null,
+  key: () => null,
+  setItem: () => undefined,
+  removeItem: () => undefined,
+} as Storage;
 
 export const useCartStore = create<CartStore>()(
   persist(
@@ -64,6 +75,10 @@ export const useCartStore = create<CartStore>()(
       totalIls: (rate) => get().total() * rate,
       itemCount: () => get().items.reduce((sum, i) => sum + i.quantity, 0),
     }),
-    { name: 'avior-cart' }
+    {
+      name: 'avior-cart',
+      storage: createJSONStorage(() => (typeof window !== 'undefined' ? localStorage : noopStorage)),
+      skipHydration: true,
+    }
   )
 );

@@ -17,6 +17,10 @@ export default function CartDrawer({ settings }: { settings: Settings }) {
     setMounted(true);
   }, []);
 
+  useEffect(() => {
+    void useCartStore.persist.rehydrate();
+  }, []);
+
   const safeItems = mounted ? items : [];
   const safeIsDrawerOpen = mounted && isDrawerOpen;
   const safeTotal = mounted ? total() : 0;

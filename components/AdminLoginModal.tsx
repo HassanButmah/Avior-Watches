@@ -1,7 +1,7 @@
 'use client';
 
 import type { FormEvent } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAdminStore } from '@/store/adminStore';
 
@@ -15,6 +15,10 @@ export default function AdminLoginModal() {
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   const [attempts, setAttempts] = useState(0);
+
+  useEffect(() => {
+    void useAdminStore.persist.rehydrate();
+  }, []);
 
   if (!showLoginModal) return null;
 

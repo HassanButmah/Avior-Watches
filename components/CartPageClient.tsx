@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Settings } from '@/lib/types';
@@ -9,6 +10,10 @@ import { MinusIcon, PlusIcon, TrashIcon } from './Icons';
 
 export default function CartPageClient({ settings }: { settings: Settings }) {
   const { items, updateQuantity, removeItem, total } = useCartStore();
+
+  useEffect(() => {
+    void useCartStore.persist.rehydrate();
+  }, []);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-28 sm:px-6 lg:px-8">
@@ -75,4 +80,3 @@ export default function CartPageClient({ settings }: { settings: Settings }) {
     </div>
   );
 }
-

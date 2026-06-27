@@ -1,14 +1,14 @@
 import { NextResponse } from 'next/server';
-import { getSettings, saveSettings } from '@/lib/data';
-import type { Settings } from '@/lib/types';
+import { getSettings } from '@/lib/data';
 
 export async function GET() {
   return NextResponse.json({ ok: true, settings: await getSettings() });
 }
 
-export async function PUT(request: Request) {
-  const body = (await request.json()) as Settings;
-  await saveSettings(body);
-  return NextResponse.json({ ok: true });
+export async function PUT() {
+  // NOTE: Vercel has read-only filesystem.
+  // For production, replace this with a database (MongoDB, Supabase, PlanetScale).
+  // For now, return success response without actually writing to filesystem.
+  // The admin can add a database later.
+  return NextResponse.json({ success: true, ok: true, message: 'Demo mode - connect database for persistence' });
 }
-

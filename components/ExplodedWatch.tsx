@@ -2,10 +2,6 @@
 
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const layers = [
   { x: -120, y: -80, rotate: -12, scale: 0.78 },
@@ -24,26 +20,43 @@ export default function ExplodedWatch() {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!ref.current) return;
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '[data-watch-layer]',
-        { y: 80, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          stagger: 0.08,
-          scrollTrigger: {
-            trigger: ref.current,
-            start: 'top 75%',
-            end: 'bottom center',
-            scrub: 1,
-          },
-        }
-      );
-    }, ref);
+    let cleanup = () => {};
+    let active = true;
 
-    return () => ctx.revert();
+    const initGSAP = async () => {
+      const { gsap } = await import('gsap');
+      const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+
+      if (!active || !ref.current) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+      const ctx = gsap.context(() => {
+        gsap.fromTo(
+          '[data-watch-layer]',
+          { y: 80, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            stagger: 0.08,
+            scrollTrigger: {
+              trigger: ref.current,
+              start: 'top 75%',
+              end: 'bottom center',
+              scrub: 1,
+            },
+          }
+        );
+      }, ref);
+
+      cleanup = () => ctx.revert();
+    };
+
+    void initGSAP();
+
+    return () => {
+      active = false;
+      cleanup();
+    };
   }, []);
 
   return (
@@ -80,4 +93,3 @@ export default function ExplodedWatch() {
     </section>
   );
 }
-

@@ -22,20 +22,20 @@ export default function CollectionGrid({ products, settings }: { products: Produ
       const queryMatch =
         !term ||
         product.name.toLowerCase().includes(term) ||
-        product.nameAr.includes(query) ||
+        product.nameAr.includes(term) ||
         product.description.toLowerCase().includes(term);
       return categoryMatch && queryMatch;
     });
   }, [category, query, products]);
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-      <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-        <div>
-          <p className="text-xs uppercase tracking-[0.4em] text-gold/70">Collections</p>
-          <h1 className="mt-2 font-display text-4xl text-white sm:text-5xl">Curated objects of precision</h1>
+    <section className="mx-auto max-w-7xl px-4 pb-16 pt-[120px] sm:px-6 lg:px-8">
+      <div className="mb-8 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div className="max-w-2xl">
+          <p className="text-[11px] uppercase tracking-[4px] text-gold">COLLECTIONS</p>
+          <h1 className="mt-2 font-display text-5xl text-white sm:text-[48px]">Curated objects of precision</h1>
         </div>
-        <div className="grid w-full gap-3 sm:grid-cols-2 lg:max-w-xl lg:grid-cols-[1fr_auto]">
+        <div className="grid w-full gap-3 sm:grid-cols-2 lg:max-w-xl lg:flex-1 lg:grid-cols-[1fr_auto] lg:justify-end">
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -64,4 +64,3 @@ export default function CollectionGrid({ products, settings }: { products: Produ
     </section>
   );
 }
-

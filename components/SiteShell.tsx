@@ -4,6 +4,8 @@ import type { ReactNode } from 'react';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import type { Settings } from '@/lib/types';
+import { useCartStore } from '@/store/cartStore';
+import { useAdminStore } from '@/store/adminStore';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import CartDrawer from './CartDrawer';
@@ -19,6 +21,11 @@ export default function SiteShell({ children, settings }: { children: ReactNode;
   useEffect(() => {
     const timer = window.setTimeout(() => setShowLoader(false), 1200);
     return () => window.clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    void useCartStore.persist.rehydrate();
+    void useAdminStore.persist.rehydrate();
   }, []);
 
   return (

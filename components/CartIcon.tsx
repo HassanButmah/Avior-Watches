@@ -13,6 +13,10 @@ export default function CartIcon() {
     setMounted(true);
   }, []);
 
+  useEffect(() => {
+    void useCartStore.persist.rehydrate();
+  }, []);
+
   return (
     <button
       type="button"

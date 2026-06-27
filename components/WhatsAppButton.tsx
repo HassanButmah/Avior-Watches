@@ -1,10 +1,14 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import type { Settings } from '@/lib/types';
 import { MessageIcon } from './Icons';
 
 export default function WhatsAppButton({ settings }: { settings: Settings }) {
+  const pathname = usePathname();
+  if (pathname !== '/' && pathname !== '/about') return null;
+
   const href = `https://wa.me/${settings.whatsappNumber.replace(/\D/g, '')}`;
 
   return (
